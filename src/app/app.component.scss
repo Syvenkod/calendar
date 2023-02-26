@@ -15,7 +15,6 @@
   }
 
   .collapse{
-    app-sidebar {
-      display: none;
-    }
+    grid-template-columns: 1.5fr 7fr;
+
   }

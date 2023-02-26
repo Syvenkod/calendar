@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DaylistAppointmentComponent } from './components/daylist/daylist-appointment/daylist-appointment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AppointmentDialogComponent,
     DaylistComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    DaylistAppointmentComponent
   ],
   imports: [
     BrowserModule,

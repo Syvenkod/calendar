@@ -1,0 +1,9 @@
+<h4>{{selectedData | date: 'EEEE, d'}}</h4>
+<div class="table">
+<table>
+    <tr *ngFor="let hour of hours">
+    <td class="time">{{hour}}</td>
+    <td class="appointment"></td>
+</tr>
+</table>
+</div>
