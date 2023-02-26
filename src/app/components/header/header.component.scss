@@ -3,13 +3,10 @@
     margin-inline: auto;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    .left-side {
-        display: flex;
-        button{
-            align-self:center;
-            margin:5px;
-        }
+    gap: 9%;
+    button{
+        align-self:center;
+        margin:5px;
     }
 }
