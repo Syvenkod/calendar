@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'calendar';
+  flag = false;
+
+  onCollapsed (event:any){
+    this.flag = !this.flag
+  }
 }

@@ -1,0 +1,15 @@
+.header {
+    width: min(100% - 15px, 1380px);
+    margin-inline: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left-side {
+        display: flex;
+        button{
+            align-self:center;
+            margin:5px;
+        }
+    }
+}

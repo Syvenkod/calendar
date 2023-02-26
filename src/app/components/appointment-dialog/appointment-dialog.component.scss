@@ -1,0 +1,30 @@
+.appointment {
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .header, .save-btn {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .content{
+        margin-left: 10%;
+        .form{
+            width: 70%;
+        }
+    }
+    .time, .description{
+        display: flex;
+        mat-icon{
+            display:flex;
+            align-self:center;
+        }
+    }
+    .save-btn {
+        button {
+        margin: 20px;
+    }
+    }
+}

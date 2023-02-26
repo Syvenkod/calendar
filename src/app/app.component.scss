@@ -1,0 +1,21 @@
+
+.container {
+    width: min(100% - 15px, 1380px);
+    height: 90%;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    overflow: hidden;
+    border: 1px solid lightgray;
+    box-shadow: -1px 1px 5px rgba(#333, 0.2);
+            app-daylist{
+              height: auto;
+              padding: 2%;
+            }
+  }
+
+  .collapse{
+    app-sidebar {
+      display: none;
+    }
+  }
