@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { CommonService } from 'src/app/service/common.service';
 
 @Component({
@@ -9,4 +10,6 @@ import { CommonService } from 'src/app/service/common.service';
 export class AppointmentDialogComponent {
   constructor(private service:CommonService) { }
   appointmentData: Date = new Date();
+  form: FormGroup;
+
 }

@@ -6,9 +6,9 @@
 </div>
 <div class="content">
   <div class="form">
-    <mat-form-field appearance="fill">
+    <mat-form-field [formGroup]="form" appearance="fill">
       <mat-label>Add title</mat-label>
-      <input matInput>
+      <input matInput formControlName="title">
     </mat-form-field>
 </div>
   <div class="time">
@@ -19,7 +19,7 @@
     <mat-icon> notes</mat-icon>
     <mat-form-field appearance="fill">
       <mat-label>add description</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
   </div>
 </div>

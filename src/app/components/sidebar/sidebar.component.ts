@@ -2,6 +2,8 @@ import { Component, AfterContentChecked } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/service/common.service';
 import { AppointmentDialogComponent } from '../appointment-dialog/appointment-dialog.component';
+import { Appointment } from '../models/appointment';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -10,6 +12,7 @@ import { AppointmentDialogComponent } from '../appointment-dialog/appointment-di
 export class SidebarComponent implements AfterContentChecked  {
   clickedData: any | undefined;
   selected: Date = new Date();
+  newAppointment = new Set<Appointment>();
 
   constructor(public dialog: MatDialog, private service:CommonService) { }
 

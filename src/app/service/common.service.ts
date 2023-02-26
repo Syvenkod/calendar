@@ -12,4 +12,9 @@ export class CommonService {
   clickedData(data: any) {
     this.clickedDataSubject.next(data);
   }
+
+  newAppointment(){
+
+  }
+
 }
