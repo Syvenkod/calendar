@@ -1,31 +1,39 @@
 <div class="appointment">
-<div class="header">
-<button mat-icon-button class="close-button" mat-dialog-close>
-    <mat-icon class="close-icon">close</mat-icon>
-</button>
-</div>
-<div class="content">
+  <div class="header">
+    <button mat-icon-button class="close-button" mat-dialog-close>
+      <mat-icon class="close-icon">close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
     <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)">
-    <mat-form-field appearance="fill">
-      <mat-label>Add title</mat-label>
-      <input matInput formControlName="title">
-    </mat-form-field>
-  <div class="time">
-    <mat-icon>access_time</mat-icon>
-    <p>{{appointmentData | date: 'medium'}}</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Add title</mat-label>
+        <input matInput formControlName="title" />
+      </mat-form-field>
+      <div class="time">
+        <mat-icon>access_time</mat-icon>
+        <mat-form-field>
+          <input matInput type="datetime-local"
+          formControlName="time">
+        </mat-form-field>
+      </div>
+      <div class="description">
+        <mat-icon> notes</mat-icon>
+        <mat-form-field appearance="fill">
+          <mat-label>add description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="save-btn">
+        <button
+          mat-raised-button
+          [disabled]="form.invalid"
+          type="submit"
+          class="send"
+        >
+          Save
+        </button>
+      </div>
+    </form>
   </div>
-  <div class="description">
-    <mat-icon> notes</mat-icon>
-    <mat-form-field appearance="fill">
-      <mat-label>add description</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-    </mat-form-field>
-  </div>
-<div class="save-btn">
-  <button mat-raised-button
-  [disabled]="form.invalid"
-  type="submit"
-  class="send">Save</button>
-</div>
-</form>
 </div>
