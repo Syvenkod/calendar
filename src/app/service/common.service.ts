@@ -7,14 +7,17 @@ import { catchError, Observable, Subject, throwError } from 'rxjs';
 export class CommonService {
   private clickedDataSubject = new Subject<any>();
   clickedData$ = this.clickedDataSubject.asObservable();
+  private newAppointmentSubject = new Subject<any>();
+  newAppointment$ = this.newAppointmentSubject.asObservable();
+
   constructor() { }
 
   clickedData(data: any) {
     this.clickedDataSubject.next(data);
   }
 
-  newAppointment(){
-
+  newAppointment(data: any){
+    this.newAppointmentSubject.next(data);
   }
 
 }
