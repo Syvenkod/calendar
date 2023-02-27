@@ -5,12 +5,11 @@
 </button>
 </div>
 <div class="content">
-  <div class="form">
-    <mat-form-field [formGroup]="form" appearance="fill">
+    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <mat-form-field appearance="fill">
       <mat-label>Add title</mat-label>
       <input matInput formControlName="title">
     </mat-form-field>
-</div>
   <div class="time">
     <mat-icon>access_time</mat-icon>
     <p>{{appointmentData | date: 'medium'}}</p>
@@ -22,8 +21,11 @@
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
   </div>
-</div>
 <div class="save-btn">
-  <button mat-raised-button>Save</button>
+  <button mat-raised-button
+  [disabled]="form.invalid"
+  type="submit"
+  class="send">Save</button>
 </div>
+</form>
 </div>
