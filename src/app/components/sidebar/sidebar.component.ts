@@ -2,7 +2,6 @@ import { Component, AfterContentChecked } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/service/common.service';
 import { AppointmentDialogComponent } from '../appointment-dialog/appointment-dialog.component';
-import { Appointment } from '../models/appointment';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,11 +9,12 @@ import { Appointment } from '../models/appointment';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements AfterContentChecked  {
-  clickedData: any | undefined;
+  clickedData: Date;
   selected: Date = new Date();
-  newAppointment = new Set<Appointment>();
 
-  constructor(public dialog: MatDialog, private service:CommonService) { }
+  constructor(public dialog: MatDialog, private service:CommonService) {
+
+   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string) {
     const dialogRef = this.dialog.open(AppointmentDialogComponent, {

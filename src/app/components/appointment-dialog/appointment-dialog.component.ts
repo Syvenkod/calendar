@@ -12,14 +12,12 @@ export class AppointmentDialogComponent implements OnInit {
   appointmentData: Date;
   form: FormGroup;
   newAppointmentData: string;
-  app: any | undefined;
 
   constructor(private service:CommonService,
   private appointForm: FormBuilder) {
     this.appointmentData = new Date();
     this.newAppointmentData = this.appointmentData.toISOString().substring(0, 16);
    }
-
 
 ngOnInit() {
     this.form = this.appointForm.group({
@@ -31,9 +29,13 @@ ngOnInit() {
   }
   onSubmit(form:any) {
     console.log(form.value);
-    this.app = JSON.stringify(form.value);
-    this.service.newAppointment(form.value);
-    sessionStorage.setItem(form.value.time, this.app)
+    if(localStorage.getItem(form.value.time.substring(0, 10))){
+      localStorage.setItem(form.value.time.substring(0, 10), localStorage.getItem(form.value.time.substring(0, 10)) + ', ' + JSON.stringify(form.value));
+    }
+    else{
+      localStorage.setItem(form.value.time.substring(0, 10), JSON.stringify(form.value))
+    }
     this.form.reset();
   }
+
 }
