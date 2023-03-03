@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, Subject, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +8,22 @@ import { catchError, Observable, Subject, throwError } from 'rxjs';
 export class CommonService {
   private clickedDataSubject = new Subject<any>();
   clickedData$ = this.clickedDataSubject.asObservable();
-  private newAppointmentSubject = new Subject<any>();
-  newAppointment$ = this.newAppointmentSubject.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   clickedData(data: any) {
     this.clickedDataSubject.next(data);
   }
 
-  newAppointment(data: any){
-    this.newAppointmentSubject.next(data);
+  getAppointments(){
+  return this.http.get('api/appointments')
   }
 
+  addAppointments(appointment: any){
+    return this.http.post('api/appointments',
+     {id: appointment.id,
+      title: appointment.title,
+      time: appointment.time,
+      description: appointment.description})
+    }
 }

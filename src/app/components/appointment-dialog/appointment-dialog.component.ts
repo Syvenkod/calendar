@@ -29,12 +29,10 @@ ngOnInit() {
   }
   onSubmit(form:any) {
     console.log(form.value);
-    if(localStorage.getItem(form.value.time.substring(0, 10))){
-      localStorage.setItem(form.value.time.substring(0, 10), localStorage.getItem(form.value.time.substring(0, 10)) + ', ' + JSON.stringify(form.value));
-    }
-    else{
-      localStorage.setItem(form.value.time.substring(0, 10), JSON.stringify(form.value))
-    }
+    this.service.addAppointments(form.value).subscribe((data)=>{
+      console.log(data);
+    })
+
     this.form.reset();
   }
 
