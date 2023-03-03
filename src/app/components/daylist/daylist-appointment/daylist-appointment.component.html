@@ -1,10 +1,10 @@
 <h4>{{selectedData | date: 'EEEE, d'}}</h4>
 <div class="table">
 <table>
-    <tr *ngFor="let app of appointments">
-    <td class="time">{{app.title}}</td>
-    <td class="time">{{app.time}}</td>
-    <td class="time">{{app.description}}<span (click)="deleteApp(app.id)">&times;</span></td>
+    <tr *ngFor="let task of tasks">
+    <td class="time">{{task.title}}</td>
+    <td class="time">{{task.time}}</td>
+    <td class="time">{{task.description}}<span (click)="deleteApp(task.id)">&times;</span></td>
     <td class="appointment"></td>
 </tr>
 </table>

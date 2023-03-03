@@ -15,23 +15,23 @@ export class CommonService {
     this.clickedDataSubject.next(data);
   }
 
-  getAppointments(){
-  return this.http.get('api/appointments')
+  getTasks(){
+  return this.http.get('api/tasks')
   }
 
-  addAppointments(appointment: any){
-    return this.http.post('api/appointments',
-     {id: appointment.id,
-      title: appointment.title,
-      time: appointment.time,
-      description: appointment.description})
+  addTask(task: any){
+    return this.http.post('api/tasks',
+     {id: task.id,
+      title: task.title,
+      time: task.time,
+      description: task.description})
     }
 
-  editAppointment(appointment: any){
-      return this.http.put(`api/appointments/${appointment.id}`, appointment)
+  editTask(task: any){
+      return this.http.put(`api/tasks/${task.id}`, task)
     }
 
-  deleteAppointment(id:number){
-      return this.http.delete(`api/appointments/${id}`)
+  deleteTask(id:number){
+      return this.http.delete(`api/tasks/${id}`)
     }
 }

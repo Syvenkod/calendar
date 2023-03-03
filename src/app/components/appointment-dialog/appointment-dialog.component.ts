@@ -9,27 +9,27 @@ import { CommonService } from 'src/app/service/common.service';
   styleUrls: ['./appointment-dialog.component.scss']
 })
 export class AppointmentDialogComponent implements OnInit {
-  appointmentData: Date;
+  taskData: Date;
   form: FormGroup;
-  newAppointmentData: string;
+  newTaskData: string;
 
   constructor(private service:CommonService,
   private appointForm: FormBuilder) {
-    this.appointmentData = new Date();
-    this.newAppointmentData = this.appointmentData.toISOString().substring(0, 16);
+    this.taskData = new Date();
+    this.newTaskData = this.taskData.toISOString().substring(0, 16);
    }
 
 ngOnInit() {
     this.form = this.appointForm.group({
       title: [null, [Validators.required]],
-      time: [this.newAppointmentData],
+      time: [this.newTaskData],
       description: [""]
     })
 
   }
   onSubmit(form:any) {
     console.log(form.value);
-    this.service.addAppointments(form.value).subscribe((data)=>{
+    this.service.addTask(form.value).subscribe((data)=>{
       console.log(data);
     })
     this.form.reset();
