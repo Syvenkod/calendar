@@ -4,7 +4,7 @@
     <tr *ngFor="let app of appointments">
     <td class="time">{{app.title}}</td>
     <td class="time">{{app.time}}</td>
-    <td class="time">{{app.description}}</td>
+    <td class="time">{{app.description}}<span (click)="deleteApp(app.id)">&times;</span></td>
     <td class="appointment"></td>
 </tr>
 </table>

@@ -26,4 +26,12 @@ export class CommonService {
       time: appointment.time,
       description: appointment.description})
     }
+
+  editAppointment(appointment: any){
+      return this.http.put(`api/appointments/${appointment.id}`, appointment)
+    }
+
+  deleteAppointment(id:number){
+      return this.http.delete(`api/appointments/${id}`)
+    }
 }

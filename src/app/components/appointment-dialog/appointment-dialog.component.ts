@@ -32,7 +32,6 @@ ngOnInit() {
     this.service.addAppointments(form.value).subscribe((data)=>{
       console.log(data);
     })
-
     this.form.reset();
   }
 

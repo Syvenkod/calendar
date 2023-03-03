@@ -19,6 +19,9 @@ export class DaylistAppointmentComponent implements OnInit, AfterContentChecked 
     // })
 
   }
+  deleteApp(id:number){
+    this.service.deleteAppointment(id).subscribe(del=>{});
+  }
 
   ngAfterContentChecked(): void {
     this.service.clickedData$.subscribe((data) =>{
