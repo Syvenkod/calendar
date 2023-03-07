@@ -5,8 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppointmentDialogComponent } from './components/appointment-dialog/appointment-dialog.component';
-import { DaylistComponent } from './components/daylist/daylist.component';
+import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatDatepickerModule} from '@angular/material/datepicker'
@@ -18,20 +17,20 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DaylistAppointmentComponent } from './components/daylist/daylist-appointment/daylist-appointment.component';
+import { DaylistComponent } from './components/daylist/daylist.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './service/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppointmentDialogComponent,
-    DaylistComponent,
+    TaskDialogComponent,
     HeaderComponent,
     SidebarComponent,
-    DaylistAppointmentComponent
+    DaylistComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatMomentDateModule,
+    DragDropModule,
     InMemoryWebApiModule.forRoot(BackendService)
   ],
   providers: [

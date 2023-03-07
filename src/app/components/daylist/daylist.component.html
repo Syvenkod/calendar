@@ -1,1 +1,16 @@
-<app-daylist-appointment></app-daylist-appointment>
+<h4>{{selectedData | date: 'EEEE, d'}}</h4>
+
+  <div class="table" *ngFor="let hour of hours">
+    <div class="hour">{{hour.time}}
+    </div>
+
+    <div class="box" *ngFor="let task of tasks; trackBy: trackById" [cdkDragData]="task" cdkDrag>
+     <ng-container *ngIf="task.date == selectedData && task.hour == hour.time">
+      <div><h5>{{task.title}}</h5></div>
+      <p>{{task.date + task.hour + task.minute | date}}</p>
+      <p>{{task.description}}</p>
+      <button (click)="deleteApp(task.id)">&times;</button>
+    </ng-container>
+    </div>
+  </div>
+

@@ -4,11 +4,11 @@ import { CommonService } from 'src/app/service/common.service';
 
 
 @Component({
-  selector: 'app-appointment-dialog',
-  templateUrl: './appointment-dialog.component.html',
-  styleUrls: ['./appointment-dialog.component.scss']
+  selector: 'app-task-dialog',
+  templateUrl: './task-dialog.component.html',
+  styleUrls: ['./task-dialog.component.scss']
 })
-export class AppointmentDialogComponent implements OnInit {
+export class TaskDialogComponent implements OnInit {
   taskData: Date;
   form: FormGroup;
   newTaskData: string;

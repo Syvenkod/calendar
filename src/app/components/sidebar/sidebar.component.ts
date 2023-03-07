@@ -1,7 +1,7 @@
 import { Component, AfterContentChecked } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/service/common.service';
-import { AppointmentDialogComponent } from '../appointment-dialog/appointment-dialog.component';
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,7 +17,7 @@ export class SidebarComponent implements AfterContentChecked  {
    }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string) {
-    const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
        width: '30%',
        enterAnimationDuration,
        exitAnimationDuration,
