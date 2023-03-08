@@ -21,6 +21,7 @@ import { DaylistComponent } from './components/daylist/daylist.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './service/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
@@ -49,6 +50,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ReactiveFormsModule,
     MatMomentDateModule,
     DragDropModule,
+    MatTableModule,
     InMemoryWebApiModule.forRoot(BackendService)
   ],
   providers: [
