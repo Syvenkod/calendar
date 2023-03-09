@@ -1,46 +1,28 @@
 <h4>{{selectedData | date: 'EEEE, d'}}</h4>
 
-  <div class="table" *ngFor="let hour of hours">
-    <div class="hour">{{hour.time}}
-    </div>
-
-    <div class="box" *ngFor="let task of tasks; trackBy: trackById" [cdkDragData]="task" cdkDrag>
-     <ng-container *ngIf="task.date == selectedData && task.hour == hour.time">
-      <div><h5>{{task.title}}</h5></div>
-      <p>{{task.date + task.hour + task.minute | date}}</p>
-      <p>{{task.description}}</p>
-      <!-- <button class="close-btn" (click)="deleteApp(task.id)">&times;</button> -->
-    </ng-container>
-    </div>
-  </div>
-
-  <!-- <ng-container *ngFor="let _ of [].constructor(24); let i = index">{{i}}</ng-container> -->
-
-  <table mat-table #table
-       [dataSource]="tasks"
-       cdkDropList
-       [cdkDropListData]="dataSource"
-       (cdkDropListDropped)="dropTable($event)">
+<table mat-table #table
+[dataSource]="hours"
+cdkDropList [cdkDropListData]="dataSource"
+(cdkDropListDropped)="drop($event)">
 
   <ng-container matColumnDef="hour">
-    <th mat-header-cell cdkDrag *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element">
-      <div class="table" *ngFor="let hour of hours">
-        <div class="hour">{{hour.time}}
-        </div></div>
-    </td>
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let hour">{{ hour.time }}</td>
   </ng-container>
 
   <ng-container matColumnDef="task">
-    <th mat-header-cell cdkDrag *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element"> <div class="box" *ngFor="let task of tasks; trackBy: trackById" [cdkDragData]="task" cdkDrag>
-      <ng-container *ngIf="task.date == selectedData">
-       <div><h5>{{task.title}}</h5></div>
-       <p>{{task.date + task.hour + task.minute | date}}</p>
-       <p>{{task.description}}</p>
-       <!-- <button class="close-btn" (click)="deleteApp(task.id)">&times;</button> -->
-     </ng-container>
-     </div> </td>
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let hour">
+      <div class="box" *ngFor="let task of tasks; trackBy: trackById"
+        >
+          <ng-container *ngIf="task.date == selectedData && task.hour == hour.time">
+            <h5>{{ task.title }}</h5>
+            <p>{{ task.date + task.hour + task.minute | date }}</p>
+            <p>{{ task.description }}</p>
+            <!-- <button class="close-btn" (click)="deleteApp(task.id)">&times;</button> -->
+          </ng-container>
+      </div>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

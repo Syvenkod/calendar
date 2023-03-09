@@ -1,18 +1,24 @@
-import { Component, AfterContentChecked, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterContentChecked, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Subscription } from 'rxjs';
 import { Task } from '../models/task';
 import {MatTable} from '@angular/material/table';
+import { Hour } from '../models/hours';
 
 @Component({
   selector: 'app-daylist',
   templateUrl: './daylist.component.html',
   styleUrls: ['./daylist.component.scss']
 })
-export class DaylistComponent implements OnInit, AfterContentChecked {
+export class DaylistComponent implements OnInit, AfterContentChecked, OnDestroy {
   selectedData: Date = new Date;
-  tasks: any;
+  tasks: any | undefined;
   hours: any | undefined;
+  private clickedDataSubscription: Subscription;
+  displayedColumns: string[] = ['hour', 'task'];
+  dataSource: any;
+  @ViewChild('table') table: MatTable<Hour>;
 
   constructor(private service:CommonService) { }
 
@@ -23,6 +29,12 @@ export class DaylistComponent implements OnInit, AfterContentChecked {
       this.hours = data;})
     }
 
+  ngOnDestroy(): void {
+      if (this.clickedDataSubscription) {
+        this.clickedDataSubscription.unsubscribe();
+      }
+    }
+
   deleteApp(id:number){
     this.service.deleteTask(id).subscribe(del =>{
       this.service.getTasks().subscribe((data) =>{
@@ -31,30 +43,21 @@ export class DaylistComponent implements OnInit, AfterContentChecked {
   }
 
   ngAfterContentChecked(): void {
-    this.service.clickedData$.subscribe((data) =>{
+    this.clickedDataSubscription = this.service.clickedData$.subscribe((data) =>{
       this.selectedData = data.toISOString().substring(0, 10);
-    })
+    });
     this.service.getTasks().subscribe((data) =>{
       this.tasks = data;
   })
-
   }
 
-  public trackById(task: any): string {
+  public trackById(task: any): number {
     return task.id;
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
-  }
-
-  displayedColumns: string[] = ['hour', 'task'];
-  dataSource: any;
-  @ViewChild('table') table: MatTable<Task>;
-
-  dropTable(event: CdkDragDrop<Task[]>) {
-    const prevIndex = this.dataSource.findIndex((d:any) => d === event.item.data);
-    moveItemInArray(this.dataSource, prevIndex, event.currentIndex);
+  drop(event: CdkDragDrop<any[]>) {
+    const prevIndex = this.hours.findIndex((d:any) => d === event.item.data);
+    moveItemInArray(this.hours, prevIndex, event.currentIndex);
     this.table.renderRows();
   }
 
