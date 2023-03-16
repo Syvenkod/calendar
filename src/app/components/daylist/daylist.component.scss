@@ -1,17 +1,38 @@
-.table {
-    width: 100%;
-    .hour{
-      font-size: 1.2rem;
-        // border-bottom: 1px solid grey;
-        height: 30px;
-    }
-    .time{
-        width: 5%;
-    }
+table{
+  th {
+    display: none;
+  }
+  .mat-column-hour{
+    width: 20px;
+  }
 }
 
 .box{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     background-color: rgb(66,133,244);
+    border-radius: 10px;
+    .task{
+      padding-left: 5%;
+    }
 }
+
+.cdk-drag {
+    &.cdk-drag-preview > *{
+      width: 200px;
+      cursor: move;
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+      .hour{
+        display: none;
+      }
+    }
+    &.cdk-drag-placeholder > *{
+
+      opacity: 0;
+    }
+  }
+  .hide{
+    opacity: 0;
+  }

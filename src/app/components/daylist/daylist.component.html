@@ -2,12 +2,15 @@
 
 <table mat-table #table
 [dataSource]="hours"
-cdkDropList [cdkDropListData]="dataSource"
+cdkDropList
+[cdkDropListData]="dataSource"
 (cdkDropListDropped)="drop($event)">
 
   <ng-container matColumnDef="hour">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let hour">{{ hour.time }}</td>
+    <td mat-cell *matCellDef="let hour">
+      <div class="hour">{{hour.id}}</div>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="task">
@@ -15,12 +18,15 @@ cdkDropList [cdkDropListData]="dataSource"
     <td mat-cell *matCellDef="let hour">
       <div class="box" *ngFor="let task of tasks; trackBy: trackById"
         >
-          <ng-container *ngIf="task.date == selectedData && task.hour == hour.time">
-            <h5>{{ task.title }}</h5>
-            <p>{{ task.date + task.hour + task.minute | date }}</p>
-            <p>{{ task.description }}</p>
+          <ng-container
+          *ngIf="task.date == selectedData && task.hour == hour.time">
+            <div class="task">
+              <p>{{ task.title }}</p>
+            <!-- <p>{{ task.date + task.hour + task.minute | date }}</p> -->
+            <!-- <p>{{ task.description }}</p> -->
             <!-- <button class="close-btn" (click)="deleteApp(task.id)">&times;</button> -->
-          </ng-container>
+          </div>
+        </ng-container>
       </div>
     </td>
   </ng-container>

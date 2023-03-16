@@ -1,10 +1,10 @@
+import { Hour } from './../models/hours';
 import { Component, AfterContentChecked, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Subscription } from 'rxjs';
 import { Task } from '../models/task';
 import {MatTable} from '@angular/material/table';
-import { Hour } from '../models/hours';
 
 @Component({
   selector: 'app-daylist',
@@ -16,7 +16,7 @@ export class DaylistComponent implements OnInit, AfterContentChecked, OnDestroy 
   tasks: any | undefined;
   hours: any | undefined;
   private clickedDataSubscription: Subscription;
-  displayedColumns: string[] = ['hour', 'task'];
+  displayedColumns: string[] = ['hour','task'];
   dataSource: any;
   @ViewChild('table') table: MatTable<Hour>;
 
@@ -56,8 +56,10 @@ export class DaylistComponent implements OnInit, AfterContentChecked, OnDestroy 
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    const prevIndex = this.hours.findIndex((d:any) => d === event.item.data);
-    moveItemInArray(this.hours, prevIndex, event.currentIndex);
+    moveItemInArray(this.hours, event.previousIndex, event.currentIndex);
+    this.hours.forEach((hour: { id: any; }, id: number) => {
+      hour.id = id + 1;
+    });
     this.table.renderRows();
   }
 
